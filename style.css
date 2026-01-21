@@ -49,3 +49,91 @@ img {
   max-width: 100%;
   height: auto;
 }
+/* =========================
+   Lab 3.2 Typography + Spacing
+   ========================= */
+
+/* Type + spacing variables */
+:root {
+  /* spacing pattern */
+  --space-1: 1rem;
+  --space-2: 2rem;
+  --space-4: 4rem;
+
+  /* type scale */
+  --text-sm: 0.95rem;
+  --text-md: 1.1rem;
+  --text-lg: 1.35rem;
+
+  --h3: 1.5rem;
+  --h2: 2rem;
+  --h1: 2.75rem;
+}
+
+/* Base readability */
+body {
+  font-size: var(--text-md);
+  line-height: 1.6;
+}
+
+/* Headings use the scale */
+h1 {
+  font-size: var(--h1);
+  line-height: 1.2;
+  margin-bottom: var(--space-1);
+}
+
+h2 {
+  font-size: var(--h2);
+  line-height: 1.25;
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-1);
+}
+
+h3 {
+  font-size: var(--h3);
+  line-height: 1.3;
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-1);
+}
+
+/* Paragraphs and lists: consistent spacing */
+p {
+  font-size: var(--text-md);
+  margin-bottom: var(--space-1);
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* Navigation spacing */
+nav {
+  margin-bottom: var(--space-2);
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: var(--space-1);
+  flex-wrap: wrap;
+}
+
+nav a {
+  text-decoration: none;
+  padding: 0.4rem 0.6rem;
+}
+
+/* Section spacing */
+main section {
+  margin-bottom: var(--space-4);
+}
+
+/* Make text blocks comfortable on wide screens */
+main {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: var(--space-2);
+}
