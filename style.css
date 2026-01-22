@@ -137,3 +137,72 @@ main {
   margin: 0 auto;
   padding: var(--space-2);
 }
+/* =========================
+   LAB 3.3 COLOR SYSTEM
+   Primary:   #1D4ED8 (links, nav, buttons)
+   Secondary: #F97316 (accents, hover highlights)
+   Neutral:   #F8FAFC (page background)
+   Text:      #0F172A (main text)
+   Border:    #E2E8F0 (light separators)
+   ========================= */
+
+:root{
+  --primary: #1D4ED8;
+  --secondary: #F97316;
+  --bg: #F8FAFC;
+  --text: #0F172A;
+  --border: #E2E8F0;
+}
+
+/* Page base */
+body{
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Headings */
+h1, h2, h3{
+  color: var(--text);
+}
+
+/* Links */
+a{
+  color: var(--primary);
+  text-decoration: underline;
+}
+a:hover{
+  color: var(--secondary);
+}
+
+/* Navigation (works whether your nav is ul/li links or simple links) */
+nav{
+  background: white;
+  border-bottom: 1px solid var(--border);
+  padding: 1rem;
+}
+nav a{
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  margin-right: 1rem;
+}
+nav a:hover{
+  color: var(--secondary);
+  text-decoration: underline;
+}
+
+/* Optional: “card” look for main content */
+main{
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  max-width: 900px;
+  margin: 2rem auto;
+}
+
+/* Optional accent element you can use anywhere */
+.accent{
+  color: var(--secondary);
+  font-weight: 700;
+}
