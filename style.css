@@ -1,8 +1,9 @@
 /* =========================
-   GLOBAL SYSTEM (Lab 3.2 + 3.3)
-   Typography, Spacing, Color
+   GLOBAL SYSTEM (Lab 3.2 + 3.3 + Lab 4.1)
+   Typography, Spacing, Color + Responsive Layout
    ========================= */
 
+/* ===== Design Tokens ===== */
 :root {
   /* spacing pattern */
   --space-1: 1rem;
@@ -18,15 +19,23 @@
   --h2: 2rem;
   --h1: 2.75rem;
 
-  /* color system (Lab 3.3) */
+  /* color system */
   --primary: #1D4ED8;
   --secondary: #F97316;
   --bg: #F8FAFC;
   --text: #0F172A;
   --border: #E2E8F0;
+
+  /* layout helpers */
+  --radius: 12px;
+  --shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
 }
 
-/* ===== Base Styles ===== */
+/* ===== Reset / Base ===== */
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: var(--text-md);
@@ -37,37 +46,32 @@ body {
   color: var(--text);
 }
 
-/* ===== Headings ===== */
+/* ===== Typography ===== */
 h1 {
   font-size: var(--h1);
-  line-height: 1.2;
-  margin-bottom: var(--space-1);
-  color: var(--text);
+  line-height: 1.15;
+  margin: 0 0 var(--space-1);
 }
 
 h2 {
   font-size: var(--h2);
-  line-height: 1.25;
-  margin-top: var(--space-2);
-  margin-bottom: var(--space-1);
-  color: var(--text);
+  line-height: 1.2;
+  margin: var(--space-2) 0 var(--space-1);
 }
 
 h3 {
   font-size: var(--h3);
-  line-height: 1.3;
-  margin-top: var(--space-2);
-  margin-bottom: var(--space-1);
-  color: var(--text);
+  line-height: 1.25;
+  margin: var(--space-2) 0 var(--space-1);
 }
 
-/* ===== Paragraphs / Lists ===== */
 p {
-  margin-bottom: var(--space-1);
+  margin: 0 0 var(--space-1);
 }
 
 ul {
-  padding-left: 20px;
+  padding-left: 1.25rem;
+  margin: 0 0 var(--space-1);
 }
 
 li {
@@ -84,51 +88,61 @@ a:hover {
   color: var(--secondary);
 }
 
-/* ===== Navigation ===== */
+/* =========================
+   LAYOUT (Mobile-first)
+   ========================= */
+
+/* ===== Header / Nav ===== */
 nav {
   background: #ffffff;
   border-bottom: 1px solid var(--border);
   padding: var(--space-1);
-  margin-bottom: var(--space-2);
 }
 
+/* Mobile-first: single column nav */
 nav ul {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
-  gap: var(--space-1);
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 nav a {
   text-decoration: none;
   font-weight: 600;
-  padding: 0.4rem 0.6rem;
+  display: block;
+  padding: 0.6rem 0.75rem; /* easier to tap on phone */
+  border-radius: 10px;
 }
 
 nav a:hover {
   text-decoration: underline;
 }
 
-/* ===== Main Content Layout ===== */
+/* ===== Main Content (single column by default) ===== */
 main {
   background: #ffffff;
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: var(--radius);
   padding: var(--space-2);
-  max-width: 900px;
-  margin: 2rem auto;
+  width: 92%;            /* flexible width for small screens */
+  max-width: 900px;      /* prevents it from getting too wide */
+  margin: var(--space-2) auto;
+  box-shadow: var(--shadow);
 }
 
 main section {
   margin-bottom: var(--space-4);
 }
 
-/* ===== Images ===== */
+/* ===== Images (Responsive - required) ===== */
 img {
   max-width: 100%;
   height: auto;
+  display: block;
+  border-radius: 10px;
 }
 
 /* Optional accent helper */
@@ -136,8 +150,34 @@ img {
   color: var(--secondary);
   font-weight: 700;
 }
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
+
+/* =========================
+   MEDIA QUERY (Required)
+   Tablet + Desktop Enhancements
+   ========================= */
+@media (min-width: 768px) {
+  /* Nav becomes horizontal */
+  nav ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-1);
+  }
+
+  nav a {
+    display: inline-block;
+  }
+
+  /* More breathing room on bigger screens */
+  main {
+    padding: var(--space-4);
+    width: 90%;
+  }
+}
+
+/* Optional: larger desktop polish */
+@media (min-width: 1200px) {
+  body {
+    font-size: var(--text-lg);
+  }
 }
