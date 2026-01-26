@@ -136,3 +136,8 @@ img {
   color: var(--secondary);
   font-weight: 700;
 }
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
