@@ -1,9 +1,16 @@
 /* =========================================================
-   Lab 4.3 — accessibility fixes (alt, headings, contrast, focus)
-   Drop this into your style.css (or merge with your current one)
+   FINAL style.css — Sprint 4 (Lab 4.1 + Lab 4.2 fixes + Lab 4.3)
+   Includes:
+   - Mobile-first layout
+   - Responsive images
+   - Media query (>= 768px)
+   - WCAG-focused contrast + link styling
+   - Visible keyboard focus states
+   - Optional skip-link styling (if you add it in HTML)
+   - Basic typography + spacing system
    ========================================================= */
 
-/* ---- Baseline / Reset ---- */
+/* ---- Reset ---- */
 *,
 *::before,
 *::after {
@@ -18,46 +25,26 @@ body {
   margin: 0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   line-height: 1.6;
-  color: #111;          /* strong contrast */
+  color: #111;            /* strong contrast */
   background: #fff;
 }
 
-/* Keep content readable */
+/* ---- Spacing + readable width ---- */
 main {
   max-width: 900px;
   margin: 0 auto;
   padding: 1.25rem;
 }
 
-/* ---- Headings (helps hierarchy visually) ---- */
-h1, h2, h3, h4 {
-  line-height: 1.2;
-  margin: 0 0 0.75rem;
+/* Optional: consistent section spacing if you use <section> */
+section {
+  margin-bottom: 2rem;
 }
 
-h1 { font-size: 2rem; margin-top: 0.5rem; }
-h2 { font-size: 1.5rem; margin-top: 2rem; }
-h3 { font-size: 1.25rem; margin-top: 1.5rem; }
-h4 { font-size: 1.1rem; margin-top: 1.25rem; }
-
-p {
-  margin: 0 0 1rem;
-}
-
-/* ---- Links (contrast + not color-only) ---- */
-a {
-  color: #0b3d91;                 /* darker blue */
-  text-decoration: underline;
-  text-underline-offset: 0.15em;
-}
-
-a:hover {
-  text-decoration-thickness: 2px;
-}
-
-/* ---- Navigation (if you have a nav) ---- */
+/* ---- Header / Nav / Footer ---- */
 header {
   border-bottom: 1px solid #ddd;
+  background: #fff;
 }
 
 nav {
@@ -71,29 +58,77 @@ nav ul {
   padding: 0;
   margin: 0;
   display: flex;
-  gap: 1rem;
   flex-wrap: wrap;
+  gap: 0.75rem;
 }
 
 nav a {
   display: inline-block;
-  padding: 0.35rem 0.6rem;
-  border-radius: 0.5rem;
+  padding: 0.4rem 0.65rem;
+  border-radius: 0.6rem;
 }
 
-/* visible hover (optional) */
 nav a:hover {
-  background: #f1f5ff;
+  background: #f1f5ff; /* light highlight */
+}
+
+footer {
+  border-top: 1px solid #ddd;
+  margin-top: 2rem;
+  padding: 1rem 1.25rem;
+  color: #222;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ---- Typography ---- */
+h1, h2, h3, h4 {
+  line-height: 1.2;
+  margin: 0 0 0.75rem;
+}
+
+h1 { font-size: 2rem; margin-top: 0.75rem; }
+h2 { font-size: 1.5rem; margin-top: 1.75rem; }
+h3 { font-size: 1.25rem; margin-top: 1.25rem; }
+h4 { font-size: 1.1rem; margin-top: 1rem; }
+
+p {
+  margin: 0 0 1rem;
+}
+
+ul, ol {
+  margin: 0 0 1rem 1.25rem;
+  padding: 0;
+}
+
+/* ---- Links (WCAG-friendly: not color-only + contrast) ---- */
+a {
+  color: #0b3d91;                 /* darker blue */
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* ---- Responsive Images ---- */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* ---- Buttons (if you use them) ---- */
 button,
 .btn {
+  display: inline-block;
   background: #0b3d91;
   color: #fff;
   border: 2px solid #0b3d91;
   padding: 0.6rem 1rem;
-  border-radius: 0.6rem;
+  border-radius: 0.65rem;
   font: inherit;
   cursor: pointer;
 }
@@ -103,7 +138,7 @@ button:hover,
   filter: brightness(0.95);
 }
 
-/* ---- Forms (if you have inputs) ---- */
+/* ---- Forms (if you have them) ---- */
 label {
   display: inline-block;
   margin-bottom: 0.35rem;
@@ -113,24 +148,16 @@ label {
 input,
 textarea {
   width: 100%;
-  max-width: 600px;
-  padding: 0.6rem 0.7rem;
+  max-width: 650px;
+  padding: 0.6rem 0.75rem;
   border: 2px solid #999;
-  border-radius: 0.5rem;
+  border-radius: 0.6rem;
   font: inherit;
   color: #111;
   background: #fff;
 }
 
-/* ---- Responsive images ---- */
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* ---- Keyboard focus (WCAG fix) ---- */
-/* If you removed outlines earlier, this brings them back intentionally */
+/* ---- WCAG: Visible Focus States (keyboard) ---- */
 a:focus,
 button:focus,
 input:focus,
@@ -139,7 +166,7 @@ textarea:focus {
   outline-offset: 3px;
 }
 
-/* Optional: focus ring mostly for keyboard users */
+/* Optional (nice): mostly show focus ring for keyboard users */
 :focus:not(:focus-visible) {
   outline: none;
 }
@@ -149,11 +176,49 @@ textarea:focus {
   outline-offset: 3px;
 }
 
-/* ---- Footer (optional) ---- */
-footer {
-  border-top: 1px solid #ddd;
-  padding: 1rem 1.25rem;
-  max-width: 900px;
-  margin: 2rem auto 0;
-  color: #222;
+/* ---- Optional: Skip link styling (only matters if you add it in HTML)
+   Example HTML:
+   <a class="skip-link" href="#main">Skip to main content</a>
+   and give <main id="main"> ...
+*/
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0.5rem;
+  background: #fff;
+  color: #111;
+  border: 2px solid #111;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  z-index: 9999;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  left: 0.75rem;
+}
+
+/* ---- Reduced motion preference (good accessibility) ---- */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* =========================================================
+   Lab 4.1 — Media Query (tablet/desktop enhancements)
+   ========================================================= */
+@media (min-width: 768px) {
+  main {
+    padding: 2rem;
+  }
+
+  nav ul {
+    gap: 1rem;
+  }
+
+  h1 { font-size: 2.4rem; }
+  h2 { font-size: 1.75rem; }
 }
