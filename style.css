@@ -1,183 +1,159 @@
-/* =========================
-   GLOBAL SYSTEM (Lab 3.2 + 3.3 + Lab 4.1)
-   Typography, Spacing, Color + Responsive Layout
-   ========================= */
+/* =========================================================
+   Lab 4.3 — accessibility fixes (alt, headings, contrast, focus)
+   Drop this into your style.css (or merge with your current one)
+   ========================================================= */
 
-/* ===== Design Tokens ===== */
-:root {
-  /* spacing pattern */
-  --space-1: 1rem;
-  --space-2: 2rem;
-  --space-4: 4rem;
-
-  /* type scale */
-  --text-sm: 0.95rem;
-  --text-md: 1.1rem;
-  --text-lg: 1.35rem;
-
-  --h3: 1.5rem;
-  --h2: 2rem;
-  --h1: 2.75rem;
-
-  /* color system */
-  --primary: #1D4ED8;
-  --secondary: #F97316;
-  --bg: #F8FAFC;
-  --text: #0F172A;
-  --border: #E2E8F0;
-
-  /* layout helpers */
-  --radius: 12px;
-  --shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
-}
-
-/* ===== Reset / Base ===== */
-* {
+/* ---- Baseline / Reset ---- */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
+html {
+  font-size: 100%;
+}
+
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: var(--text-md);
-  line-height: 1.6;
   margin: 0;
-  padding: 0;
-  background: var(--bg);
-  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height: 1.6;
+  color: #111;          /* strong contrast */
+  background: #fff;
 }
 
-/* ===== Typography ===== */
-h1 {
-  font-size: var(--h1);
-  line-height: 1.15;
-  margin: 0 0 var(--space-1);
+/* Keep content readable */
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.25rem;
 }
 
-h2 {
-  font-size: var(--h2);
+/* ---- Headings (helps hierarchy visually) ---- */
+h1, h2, h3, h4 {
   line-height: 1.2;
-  margin: var(--space-2) 0 var(--space-1);
+  margin: 0 0 0.75rem;
 }
 
-h3 {
-  font-size: var(--h3);
-  line-height: 1.25;
-  margin: var(--space-2) 0 var(--space-1);
-}
+h1 { font-size: 2rem; margin-top: 0.5rem; }
+h2 { font-size: 1.5rem; margin-top: 2rem; }
+h3 { font-size: 1.25rem; margin-top: 1.5rem; }
+h4 { font-size: 1.1rem; margin-top: 1.25rem; }
 
 p {
-  margin: 0 0 var(--space-1);
+  margin: 0 0 1rem;
 }
 
-ul {
-  padding-left: 1.25rem;
-  margin: 0 0 var(--space-1);
-}
-
-li {
-  margin-bottom: 0.5rem;
-}
-
-/* ===== Links ===== */
+/* ---- Links (contrast + not color-only) ---- */
 a {
-  color: var(--primary);
+  color: #0b3d91;                 /* darker blue */
   text-decoration: underline;
+  text-underline-offset: 0.15em;
 }
 
 a:hover {
-  color: var(--secondary);
+  text-decoration-thickness: 2px;
 }
 
-/* =========================
-   LAYOUT (Mobile-first)
-   ========================= */
+/* ---- Navigation (if you have a nav) ---- */
+header {
+  border-bottom: 1px solid #ddd;
+}
 
-/* ===== Header / Nav ===== */
 nav {
-  background: #ffffff;
-  border-bottom: 1px solid var(--border);
-  padding: var(--space-1);
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0.75rem 1.25rem;
 }
 
-/* Mobile-first: single column nav */
 nav ul {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 nav a {
-  text-decoration: none;
-  font-weight: 600;
-  display: block;
-  padding: 0.6rem 0.75rem; /* easier to tap on phone */
-  border-radius: 10px;
+  display: inline-block;
+  padding: 0.35rem 0.6rem;
+  border-radius: 0.5rem;
 }
 
+/* visible hover (optional) */
 nav a:hover {
-  text-decoration: underline;
+  background: #f1f5ff;
 }
 
-/* ===== Main Content (single column by default) ===== */
-main {
-  background: #ffffff;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: var(--space-2);
-  width: 92%;            /* flexible width for small screens */
-  max-width: 900px;      /* prevents it from getting too wide */
-  margin: var(--space-2) auto;
-  box-shadow: var(--shadow);
+/* ---- Buttons (if you use them) ---- */
+button,
+.btn {
+  background: #0b3d91;
+  color: #fff;
+  border: 2px solid #0b3d91;
+  padding: 0.6rem 1rem;
+  border-radius: 0.6rem;
+  font: inherit;
+  cursor: pointer;
 }
 
-main section {
-  margin-bottom: var(--space-4);
+button:hover,
+.btn:hover {
+  filter: brightness(0.95);
 }
 
-/* ===== Images (Responsive - required) ===== */
+/* ---- Forms (if you have inputs) ---- */
+label {
+  display: inline-block;
+  margin-bottom: 0.35rem;
+  font-weight: 600;
+}
+
+input,
+textarea {
+  width: 100%;
+  max-width: 600px;
+  padding: 0.6rem 0.7rem;
+  border: 2px solid #999;
+  border-radius: 0.5rem;
+  font: inherit;
+  color: #111;
+  background: #fff;
+}
+
+/* ---- Responsive images ---- */
 img {
   max-width: 100%;
   height: auto;
   display: block;
-  border-radius: 10px;
 }
 
-/* Optional accent helper */
-.accent {
-  color: var(--secondary);
-  font-weight: 700;
+/* ---- Keyboard focus (WCAG fix) ---- */
+/* If you removed outlines earlier, this brings them back intentionally */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+  outline: 3px solid currentColor;
+  outline-offset: 3px;
 }
 
-/* =========================
-   MEDIA QUERY (Required)
-   Tablet + Desktop Enhancements
-   ========================= */
-@media (min-width: 768px) {
-  /* Nav becomes horizontal */
-  nav ul {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: var(--space-1);
-  }
-
-  nav a {
-    display: inline-block;
-  }
-
-  /* More breathing room on bigger screens */
-  main {
-    padding: var(--space-4);
-    width: 90%;
-  }
+/* Optional: focus ring mostly for keyboard users */
+:focus:not(:focus-visible) {
+  outline: none;
 }
 
-/* Optional: larger desktop polish */
-@media (min-width: 1200px) {
-  body {
-    font-size: var(--text-lg);
-  }
+:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 3px;
+}
+
+/* ---- Footer (optional) ---- */
+footer {
+  border-top: 1px solid #ddd;
+  padding: 1rem 1.25rem;
+  max-width: 900px;
+  margin: 2rem auto 0;
+  color: #222;
 }
