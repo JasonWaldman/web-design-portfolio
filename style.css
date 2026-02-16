@@ -236,3 +236,6 @@ textarea:focus {
   h1 { font-size: 2.4rem; }
   h2 { font-size: 1.75rem; }
 }
+.hidden {
+  display: none;
+}
