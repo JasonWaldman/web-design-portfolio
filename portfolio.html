@@ -21,16 +21,27 @@
   <main>
     <h1>Portfolio</h1>
 
-    <p>Paragraph 1: This portfolio page is where I will showcase projects I complete throughout this course and future web design work. Right now, it serves as a starting point that demonstrates how projects can be organized and presented on a website. Even though the content is still simple, the structure of the page is designed to make adding new work easy later on.</p>
-    <p>Paragraph 2: So far, the main project featured in this portfolio is the creation of this multi-page website using semantic HTML. Through this assignment, I’ve learned how important navigation, page hierarchy, and clean code are to creating a functional site. Each project I add will build on these skills and reflect my progress as I learn more about design and development.</p>
-    <p>Paragraph 3: As I continue working on this portfolio, I plan to include screenshots, descriptions, and links to completed projects. Eventually, I would like this page to feel more interactive and visually engaging once CSS is introduced. This portfolio will act as a record of my growth and a place to showcase the skills I develop throughout the course.</p>
+    <p>
+      This portfolio page is where I showcase projects I complete throughout this course and future web design work.
+      Right now, it shows the structure of my site and how projects can be presented clearly.
+    </p>
 
-<h2>Featured Image</h2>
-<img
-  src="jason-smiling.jpeg"
-  alt="Photo of me standing outdoors near a pond with a historic building in the background"
-  width="300"
-/>
+    <p>
+      The main project featured so far is building this multi-page website using semantic HTML.
+      Through this work, I’ve learned how important navigation, hierarchy, and clean code are for a functional site.
+    </p>
+
+    <p>
+      As I continue developing this portfolio, I plan to add screenshots, descriptions, and links to completed projects.
+      This page will act as a record of my growth and a place to highlight my skills.
+    </p>
+
+    <h2>Featured Image</h2>
+    <img
+      src="jason-smiling.jpeg"
+      alt="Photo of me standing outdoors near a pond with a historic building in the background"
+      width="300"
+    />
 
     <h2>Project Ideas</h2>
     <ol>
@@ -38,11 +49,56 @@
       <li>Homepage redesign with CSS later</li>
       <li>Simple gallery or layout experiment</li>
     </ol>
-    <iframe src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=v2%3A2PACX-1vS7DD-tSwWIIcLp3EhVaVGJMV0SjZ-a92kNpXY3dKQ__6B_JQenGbXWiRv78Rsq-2496MxrqMWC2r35&font=Default&lang=en&initial_zoom=2&width=100%25&height=650' width='100%' height='650' webkitallowfullscreen mozallowfullscreen allowfullscreen frameborder='0'></iframe>
+
+    <!-- ✅ Release 7: Interactive Story + Custom JavaScript -->
+    <section class="interactive-story" aria-labelledby="story-title">
+      <h2 id="story-title">Interactive Story: My Progress Timeline</h2>
+
+      <!-- ✅ Intro text explaining what the interactive shows -->
+      <p>
+        This interactive timeline highlights key milestones from this course and my development as a web designer.
+        Use the arrows inside the timeline to move through each milestone in chronological order.
+      </p>
+
+      <!-- ✅ Custom JS behavior (event listener + visible change) -->
+      <button id="read-more-btn" type="button" aria-expanded="false">
+        Read More
+      </button>
+
+      <!-- ✅ Accessible alternative/context paragraph -->
+      <div id="extra-text" class="hidden">
+        <p>
+          I chose a timeline format because it makes the story easy to follow over time.
+          Each entry represents a project, skill, or milestone that helped me improve.
+          If the embed does not load, the story is still a chronological list of my major milestones.
+        </p>
+      </div>
+
+      <!-- ✅ Embedded interactive element (TimelineJS) -->
+      <figure>
+        <iframe
+          title="Timeline of my course and portfolio milestones"
+          src="https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=v2%3A2PACX-1vS7DD-tSwWIIcLp3EhVaVGJMV0SjZ-a92kNpXY3dKQ__6B_JQenGbXWiRv78Rsq-2496MxrqMWC2r35&font=Default&lang=en&initial_zoom=2&width=100%25&height=650"
+          width="100%"
+          height="650"
+          webkitallowfullscreen
+          mozallowfullscreen
+          allowfullscreen
+          frameborder="0">
+        </iframe>
+
+        <figcaption>
+          Caption: This timeline presents my milestones in order to show how my skills and projects build over time.
+        </figcaption>
+      </figure>
+    </section>
   </main>
 
   <footer>
     <p>&copy; 2026 Jason Waldman</p>
   </footer>
+
+  <!-- ✅ REQUIRED: linked script.js file -->
+  <script src="script.js"></script>
 </body>
 </html>
