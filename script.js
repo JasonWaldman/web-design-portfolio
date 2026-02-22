@@ -1,12 +1,21 @@
+// Release 7 — Custom JavaScript Behavior
+// Toggles extra context text for the interactive story section
+
 const button = document.querySelector("#read-more-btn");
 const extraText = document.querySelector("#extra-text");
 
-button.addEventListener("click", function () {
-  extraText.classList.toggle("hidden");
+if (button && extraText) {
+  button.addEventListener("click", () => {
+    extraText.classList.toggle("hidden");
 
-  if (extraText.classList.contains("hidden")) {
-    button.textContent = "Read More";
-  } else {
-    button.textContent = "Read Less";
-  }
-});
+    const isHidden = extraText.classList.contains("hidden");
+
+    if (isHidden) {
+      button.textContent = "Read More";
+      button.setAttribute("aria-expanded", "false");
+    } else {
+      button.textContent = "Read Less";
+      button.setAttribute("aria-expanded", "true");
+    }
+  });
+}
