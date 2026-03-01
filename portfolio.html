@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio | Web Design Portfolio</title>
+  <title>Portfolio | Jason Waldman Portfolio</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -22,46 +22,54 @@
     <h1>Portfolio</h1>
 
     <p>
-      This portfolio page is where I showcase projects I complete throughout this course and future web design work.
-      Right now, it shows the structure of my site and how projects can be presented clearly.
+      This page highlights selected work from my web design coursework and shows how I build
+      clear, accessible pages with usability-focused structure. My projects emphasize navigation clarity,
+      scannable content, and clean semantic HTML.
     </p>
 
-    <p>
-      The main project featured so far is building this multi-page website using semantic HTML.
-      Through this work, I’ve learned how important navigation, hierarchy, and clean code are for a functional site.
-    </p>
+    <h2>Featured Work</h2>
 
-    <p>
-      As I continue developing this portfolio, I plan to add screenshots, descriptions, and links to completed projects.
-      This page will act as a record of my growth and a place to highlight my skills.
-    </p>
+    <section aria-labelledby="proj-1-title">
+      <h3 id="proj-1-title">Multi-Page Portfolio Website (HTML + Accessibility)</h3>
+      <p>
+        I designed and built a multi-page website (Home, About, Portfolio, Contact) to practice semantic structure,
+        navigation consistency, and accessible content layout.
+      </p>
+      <p><strong>My Role:</strong> Information organization, page structure, content writing, and accessibility improvements.</p>
+      <p><strong>Skills Used:</strong> Semantic HTML, headings hierarchy, descriptive links, alt text, and navigation patterns.</p>
+    </section>
+
+    <section aria-labelledby="proj-2-title">
+      <h3 id="proj-2-title">Usability Improvements (Release 8 Iterations)</h3>
+      <p>
+        After observing how users skim and scroll to find key information, I revised the site to improve clarity and task completion.
+        Updates included a stronger homepage headline, clearer navigation pathways, and more professional About/Contact content.
+      </p>
+      <p><strong>My Role:</strong> Testing observation, revision planning, and implementing changes in HTML and JavaScript.</p>
+      <p><strong>Skills Used:</strong> Usability writing, scannable formatting, accessibility checks, and iterative improvement.</p>
+    </section>
 
     <h2>Featured Image</h2>
+    <p>
+      A personal photo used as supporting content for my portfolio identity.
+    </p>
     <img
       src="jason-smiling.jpeg"
-      alt="Photo of me standing outdoors near a pond with a historic building in the background"
+      alt="Photo of Jason Waldman standing outdoors near a pond with a historic building in the background"
       width="300"
     />
-
-    <h2>Project Ideas</h2>
-    <ol>
-      <li>Multi-page HTML site (this assignment)</li>
-      <li>Homepage redesign with CSS later</li>
-      <li>Simple gallery or layout experiment</li>
-    </ol>
 
     <!-- ✅ Release 7: Interactive Story + Custom JavaScript -->
     <section class="interactive-story" aria-labelledby="story-title">
       <h2 id="story-title">Interactive Story: My Progress Timeline</h2>
 
-      <!-- ✅ Intro text explaining what the interactive shows -->
       <p>
         This interactive timeline highlights key milestones from this course and my development as a web designer.
         Use the arrows inside the timeline to move through each milestone in chronological order.
       </p>
 
       <!-- ✅ Custom JS behavior (event listener + visible change) -->
-      <button id="read-more-btn" type="button" aria-expanded="false">
+      <button id="read-more-btn" type="button" aria-expanded="false" aria-controls="extra-text">
         Read More
       </button>
 
@@ -70,7 +78,7 @@
         <p>
           I chose a timeline format because it makes the story easy to follow over time.
           Each entry represents a project, skill, or milestone that helped me improve.
-          If the embed does not load, the story is still a chronological list of my major milestones.
+          If the embed does not load, the timeline still represents a chronological list of my course milestones.
         </p>
       </div>
 
@@ -88,7 +96,7 @@
         </iframe>
 
         <figcaption>
-          Caption: This timeline presents my milestones in order to show how my skills and projects build over time.
+          Caption: This timeline presents milestones in order to show how my skills and projects build over time.
         </figcaption>
       </figure>
     </section>
@@ -98,7 +106,6 @@
     <p>&copy; 2026 Jason Waldman</p>
   </footer>
 
-  <!-- ✅ REQUIRED: linked script.js file -->
   <script src="script.js"></script>
 </body>
 </html>
