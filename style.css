@@ -1,13 +1,13 @@
 /* =========================================================
-   FINAL style.css — Sprint 4 (Lab 4.1 + Lab 4.2 fixes + Lab 4.3)
+   style.css — Release 8 polish
    Includes:
    - Mobile-first layout
-   - Responsive images
+   - Responsive images + iframe
    - Media query (>= 768px)
-   - WCAG contrast + link styling
+   - WCAG-friendly contrast + links
    - Visible keyboard focus states
-   - Optional skip-link styling
-   - Better nav/current-page state + focus hover
+   - Current-page nav highlight
+   - Light layout polish for portfolio sections
    ========================================================= */
 
 /* ---- Reset ---- */
@@ -41,7 +41,7 @@ main {
   padding: 1.25rem;
 }
 
-/* Optional: consistent section spacing if you use <section> */
+/* Consistent section spacing */
 section {
   margin-bottom: 2rem;
 }
@@ -81,8 +81,7 @@ nav a:hover {
   background: #f1f5ff;
 }
 
-/* Optional: if you add aria-current="page" in HTML,
-   this will highlight the current page link */
+/* Highlight current page link */
 nav a[aria-current="page"] {
   background: #e6eeff;
   font-weight: 700;
@@ -118,6 +117,13 @@ ul, ol {
   padding: 0;
 }
 
+/* Accent text used in homepage headline */
+.accent {
+  background: #e6eeff;
+  padding: 0.1rem 0.35rem;
+  border-radius: 0.4rem;
+}
+
 /* ---- Links (WCAG-friendly: not color-only + contrast) ---- */
 a {
   color: #0b3d91;
@@ -136,7 +142,7 @@ img {
   display: block;
 }
 
-/* ---- Buttons (if you use them) ---- */
+/* ---- Buttons ---- */
 button,
 .btn {
   display: inline-block;
@@ -173,7 +179,7 @@ textarea {
   background: #fff;
 }
 
-/* ---- WCAG: Visible Focus States (keyboard) ---- */
+/* ---- WCAG: Visible Focus States ---- */
 a:focus,
 button:focus,
 input:focus,
@@ -182,7 +188,7 @@ textarea:focus {
   outline-offset: 3px;
 }
 
-/* Optional (nice): mostly show focus ring for keyboard users */
+/* Mostly show focus ring for keyboard users */
 :focus:not(:focus-visible) {
   outline: none;
 }
@@ -210,6 +216,30 @@ textarea:focus {
   left: 0.75rem;
 }
 
+/* ---- Portfolio polish (makes sections scannable) ---- */
+.interactive-story,
+main section[aria-labelledby] {
+  border: 1px solid #ddd;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  background: #fff;
+}
+
+.interactive-story button {
+  margin-bottom: 1rem;
+}
+
+/* Responsive iframe */
+iframe {
+  max-width: 100%;
+  border: 0;
+}
+
+/* Hidden utility class (used by JS toggle) */
+.hidden {
+  display: none;
+}
+
 /* ---- Reduced motion preference ---- */
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
@@ -221,9 +251,7 @@ textarea:focus {
   }
 }
 
-/* =========================================================
-   Lab 4.1 — Media Query (tablet/desktop enhancements)
-   ========================================================= */
+/* ---- Media Query: tablet/desktop enhancements ---- */
 @media (min-width: 768px) {
   main {
     padding: 2rem;
@@ -235,10 +263,4 @@ textarea:focus {
 
   h1 { font-size: 2.4rem; }
   h2 { font-size: 1.75rem; }
-}
-.hidden {
-  display: none;
-}
-.hidden {
-  display: none;
 }
