@@ -29,30 +29,65 @@
 
     <h2>Featured Work</h2>
 
-    <section aria-labelledby="proj-1-title">
-      <h3 id="proj-1-title">Multi-Page Portfolio Website (HTML + Accessibility)</h3>
-      <p>
-        I designed and built a multi-page website (Home, About, Portfolio, Contact) to practice semantic structure,
-        navigation consistency, and accessible content layout.
-      </p>
-      <p><strong>My Role:</strong> Information organization, page structure, content writing, and accessibility improvements.</p>
-      <p><strong>Skills Used:</strong> Semantic HTML, headings hierarchy, descriptive links, alt text, and navigation patterns.</p>
-    </section>
+    <!-- Lab 9.2: Card Components -->
+    <section class="cards" aria-label="Featured portfolio work">
+      <!-- Card 1 -->
+      <article class="card" aria-labelledby="proj-1-title">
+        <img
+          class="card__img"
+          src="images/project1.jpg"
+          alt="Screenshot placeholder for the multi-page portfolio website project"
+        />
+        <div class="card__body">
+          <h3 class="card__title" id="proj-1-title">Multi-Page Portfolio Website (HTML + Accessibility)</h3>
 
-    <section aria-labelledby="proj-2-title">
-      <h3 id="proj-2-title">Usability Improvements (Release 8 Iterations)</h3>
-      <p>
-        After observing how users skim and scroll to find key information, I revised the site to improve clarity and task completion.
-        Updates included a stronger homepage headline, clearer navigation pathways, and more professional About/Contact content.
-      </p>
-      <p><strong>My Role:</strong> Testing observation, revision planning, and implementing changes in HTML and JavaScript.</p>
-      <p><strong>Skills Used:</strong> Usability writing, scannable formatting, accessibility checks, and iterative improvement.</p>
+          <p class="card__text">
+            I designed and built a multi-page website (Home, About, Portfolio, Contact) to practice semantic structure,
+            navigation consistency, and accessible content layout.
+          </p>
+
+          <p><strong>My Role:</strong> Information organization, page structure, content writing, and accessibility improvements.</p>
+          <p><strong>Skills Used:</strong> Semantic HTML, headings hierarchy, descriptive links, alt text, and navigation patterns.</p>
+
+          <div class="card__actions">
+            <a class="btn btn-primary" href="index.html">View Site Pages</a>
+            <a class="btn btn-secondary" href="contact.html">Ask About It</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="card" aria-labelledby="proj-2-title">
+        <img
+          class="card__img"
+          src="images/project2.jpg"
+          alt="Screenshot placeholder for usability improvements and iteration work"
+        />
+        <div class="card__body">
+          <h3 class="card__title" id="proj-2-title">Usability Improvements (Release 8 Iterations)</h3>
+
+          <p class="card__text">
+            After observing how users skim and scroll to find key information, I revised the site to improve clarity and task completion.
+            Updates included a stronger homepage headline, clearer navigation pathways, and more professional About/Contact content.
+          </p>
+
+          <p><strong>My Role:</strong> Testing observation, revision planning, and implementing changes in HTML and JavaScript.</p>
+          <p><strong>Skills Used:</strong> Usability writing, scannable formatting, accessibility checks, and iterative improvement.</p>
+
+          <div class="card__actions">
+            <a class="btn btn-primary" href="about.html">See About Updates</a>
+            <a class="btn btn-secondary" href="contact.html">Contact Me</a>
+          </div>
+        </div>
+      </article>
     </section>
 
     <h2>Featured Image</h2>
     <p>
       A personal photo used as supporting content for my portfolio identity.
     </p>
+
+    <!-- Keep your original photo, but make it responsive (your CSS already supports responsive images if you added it) -->
     <img
       src="jason-smiling.jpeg"
       alt="Photo of Jason Waldman standing outdoors near a pond with a historic building in the background"
@@ -69,7 +104,7 @@
       </p>
 
       <!-- ✅ Custom JS behavior (event listener + visible change) -->
-      <button id="read-more-btn" type="button" aria-expanded="false" aria-controls="extra-text">
+      <button class="btn btn-primary" id="read-more-btn" type="button" aria-expanded="false" aria-controls="extra-text">
         Read More
       </button>
 
