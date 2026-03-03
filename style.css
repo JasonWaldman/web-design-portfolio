@@ -1,5 +1,5 @@
 /* =========================================================
-   style.css — Release 8 polish
+   style.css — Release 8 polish + Lab 9.2 UI Components
    Includes:
    - Mobile-first layout
    - Responsive images + iframe
@@ -7,7 +7,9 @@
    - WCAG-friendly contrast + links
    - Visible keyboard focus states
    - Current-page nav highlight
-   - Light layout polish for portfolio sections
+   - Reusable buttons (primary + secondary)
+   - Reusable cards (image + text) + grid
+   - Consistent 8pt spacing tokens
    ========================================================= */
 
 /* ---- Reset ---- */
@@ -32,6 +34,28 @@ body {
   line-height: 1.6;
   color: #111;
   background: #fff;
+}
+
+/* =========================================================
+   Lab 9.2 — Spacing + tokens (8pt system)
+   ========================================================= */
+:root{
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+
+  --radius: 12px;
+  --border: 1px solid #ddd;
+
+  --primary: #0b3d91;          /* match your site blue */
+  --primary-hover: #082f6f;
+
+  --surface: #fff;
+  --surface-2: #f1f5ff;        /* matches your nav hover */
+  --muted: #444;
+
+  --focus: 3px solid #111;     /* high-contrast focus ring */
 }
 
 /* ---- Spacing + readable width ---- */
@@ -69,16 +93,16 @@ nav ul {
 
 nav a {
   display: inline-block;
-  padding: 0.4rem 0.65rem;
-  border-radius: 0.6rem;
-  color: #0b3d91;
+  padding: 0.6rem 0.85rem;     /* larger tap targets (Lab 9.2) */
+  border-radius: 999px;
+  color: var(--primary);
   text-decoration: underline;
   text-underline-offset: 0.15em;
 }
 
 /* Hover + focus should both be obvious */
 nav a:hover {
-  background: #f1f5ff;
+  background: var(--surface-2);
 }
 
 /* Highlight current page link */
@@ -126,7 +150,7 @@ ul, ol {
 
 /* ---- Links (WCAG-friendly: not color-only + contrast) ---- */
 a {
-  color: #0b3d91;
+  color: var(--primary);
   text-decoration: underline;
   text-underline-offset: 0.15em;
 }
@@ -142,22 +166,47 @@ img {
   display: block;
 }
 
-/* ---- Buttons ---- */
+/* =========================================================
+   Lab 9.2 — Buttons (Primary + Secondary)
+   Reusable classes: .btn .btn-primary .btn-secondary
+   ========================================================= */
 button,
 .btn {
-  display: inline-block;
-  background: #0b3d91;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  background: var(--primary);
   color: #fff;
-  border: 2px solid #0b3d91;
+  border: 2px solid var(--primary);
   padding: 0.6rem 1rem;
-  border-radius: 0.65rem;
+  border-radius: 999px;
   font: inherit;
   cursor: pointer;
+  text-decoration: none;
+  line-height: 1;
 }
 
 button:hover,
 .btn:hover {
   filter: brightness(0.95);
+}
+
+.btn-primary{
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+.btn-secondary{
+  background: transparent;
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-secondary:hover{
+  background: #e6eeff;
 }
 
 /* ---- Forms (if you have them) ---- */
@@ -194,7 +243,7 @@ textarea:focus {
 }
 
 :focus-visible {
-  outline: 3px solid currentColor;
+  outline: var(--focus);
   outline-offset: 3px;
 }
 
@@ -216,7 +265,58 @@ textarea:focus {
   left: 0.75rem;
 }
 
-/* ---- Portfolio polish (makes sections scannable) ---- */
+/* =========================================================
+   Lab 9.2 — Cards (image + text) + grid
+   Reusable: .cards .card .card__img .card__body .card__title .card__text .card__actions
+   ========================================================= */
+.cards{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.card{
+  background: var(--surface);
+  border: var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.card__img{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.card__body{
+  padding: var(--space-2);
+}
+
+.card__title{
+  margin: 0 0 var(--space-1) 0;
+}
+
+.card__text{
+  margin: 0 0 var(--space-2) 0;
+  color: var(--muted);
+}
+
+.card__actions{
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-top: var(--space-1);
+}
+
+/* Desktop cards */
+@media (min-width: 768px){
+  .cards{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ---- Portfolio polish (scannable sections) ---- */
 .interactive-story,
 main section[aria-labelledby] {
   border: 1px solid #ddd;
@@ -263,153 +363,4 @@ iframe {
 
   h1 { font-size: 2.4rem; }
   h2 { font-size: 1.75rem; }
-}
-/* =========================================================
-   Lab 9.2 — UI Components (Reusable)
-   Paste at the BOTTOM of style.css
-   Includes: spacing system, buttons, cards, responsive card grid, nav states
-   ========================================================= */
-
-/* ---- UI system tokens (8pt spacing) ---- */
-:root{
-  --space-1: 8px;
-  --space-2: 16px;
-  --space-3: 24px;
-  --space-4: 32px;
-
-  --radius: 12px;
-  --border: 1px solid #ddd;
-
-  --text: #111;
-  --muted: #444;
-
-  --primary: #0b57d0;
-  --primary-hover: #0847ad;
-
-  --surface: #fff;
-  --surface-2: #f6f6f6;
-
-  --focus: 3px solid #111;
-}
-
-/* ---- Buttons ---- */
-.btn{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-
-  padding: 12px 16px;
-  border-radius: 999px;
-  border: 2px solid transparent;
-
-  font-weight: 600;
-  text-decoration: none;
-  line-height: 1;
-  cursor: pointer;
-}
-
-.btn:focus-visible{
-  outline: var(--focus);
-  outline-offset: 3px;
-}
-
-.btn-primary{
-  background: var(--primary);
-  color: #fff;
-}
-
-.btn-primary:hover{
-  background: var(--primary-hover);
-}
-
-.btn-secondary{
-  background: transparent;
-  color: var(--primary);
-  border-color: var(--primary);
-}
-
-.btn-secondary:hover{
-  background: #e8f0fe;
-}
-
-/* ---- Cards ---- */
-.cards{
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-2);
-  margin-top: var(--space-2);
-}
-
-.card{
-  background: var(--surface);
-  border: var(--border);
-  border-radius: var(--radius);
-  overflow: hidden;
-}
-
-.card__img{
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.card__body{
-  padding: var(--space-2);
-}
-
-.card__title{
-  margin: 0 0 var(--space-1) 0;
-  font-size: 1.125rem;
-  line-height: 1.3;
-}
-
-.card__text{
-  margin: 0 0 var(--space-2) 0;
-  color: var(--muted);
-}
-
-.card__actions{
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-1);
-}
-
-/* Desktop card grid */
-@media (min-width: 768px){
-  .cards{
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* ---- Navigation states (active, hover, focus, tap targets) ---- */
-nav ul{
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  gap: var(--space-1);
-  flex-wrap: wrap;
-}
-
-nav a{
-  display: inline-block;
-  padding: 12px 14px; /* tap target */
-  border-radius: 999px;
-  text-decoration: none;
-  color: var(--text);
-}
-
-nav a:hover{
-  background: var(--surface-2);
-}
-
-nav a:focus-visible{
-  outline: var(--focus);
-  outline-offset: 3px;
-}
-
-nav a[aria-current="page"]{
-  background: #111;
-  color: #fff;
 }
