@@ -19,87 +19,89 @@
   </header>
 
   <main>
-    <h1>Portfolio</h1>
+    <section class="content-section">
+      <h1>Portfolio</h1>
 
-    <p>
-      This page highlights selected work from my web design coursework and shows how I build
-      clear, accessible pages with usability-focused structure. My projects emphasize navigation clarity,
-      scannable content, and clean semantic HTML.
-    </p>
+      <p class="lead">
+        This page highlights selected work from my web design coursework and shows how I build
+        clear, accessible pages with usability-focused structure.
+      </p>
 
-    <h2>Featured Work</h2>
-
-    <!-- UI Component: Card Grid -->
-    <section class="cards" aria-label="Featured portfolio work">
-
-      <!-- Card 1 — Temple Image -->
-      <article class="card" aria-labelledby="proj-1-title">
-        <img
-          class="card__img"
-          src="images/Temple.jpeg"
-          alt="Temple building photographed during travel"
-        />
-        <div class="card__body">
-          <h3 class="card__title" id="proj-1-title">
-            Multi-Page Portfolio Website (HTML + Accessibility)
-          </h3>
-
-          <p class="card__text">
-            I designed and built a multi-page website (Home, About, Portfolio, Contact) to practice semantic structure,
-            navigation consistency, and accessible content layout.
-          </p>
-
-          <p><strong>My Role:</strong> Information organization, page structure, content writing, and accessibility improvements.</p>
-          <p><strong>Skills Used:</strong> Semantic HTML, heading hierarchy, descriptive links, alt text, and navigation patterns.</p>
-
-          <div class="card__actions">
-            <a class="btn btn-primary" href="index.html">View Site Pages</a>
-            <a class="btn btn-secondary" href="contact.html">Contact Me</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Card 2 — Ski Image -->
-      <article class="card" aria-labelledby="proj-2-title">
-        <img
-          class="card__img"
-          src="images/ski.jpg"
-          alt="Two skiers standing on a snowy trail surrounded by snow-covered trees"
-        />
-        <div class="card__body">
-          <h3 class="card__title" id="proj-2-title">
-            Usability Improvements (Release 8 Iterations)
-          </h3>
-
-          <p class="card__text">
-            After observing how users skim and scroll to find key information, I revised the site to improve clarity and task completion.
-            Updates included a stronger homepage headline, clearer navigation pathways, and more professional About/Contact content.
-          </p>
-
-          <p><strong>My Role:</strong> Testing observation, revision planning, and implementing changes in HTML and JavaScript.</p>
-          <p><strong>Skills Used:</strong> Usability writing, scannable formatting, accessibility checks, and iterative improvement.</p>
-
-          <div class="card__actions">
-            <a class="btn btn-primary" href="about.html">See About Updates</a>
-            <a class="btn btn-secondary" href="contact.html">Get in Touch</a>
-          </div>
-        </div>
-      </article>
-
+      <p>
+        My projects emphasize navigation clarity, scannable content, and clean semantic HTML.
+      </p>
     </section>
 
-    <h2>Featured Image</h2>
-    <p>
-      A personal photo used as supporting content for my portfolio identity.
-    </p>
+    <section aria-label="Featured portfolio work">
+      <h2>Featured Work</h2>
 
-    <img
-      src="images/jason-smiling.jpeg"
-      alt="Photo of Jason Waldman smiling outdoors"
-      width="300"
-    />
+      <div class="cards">
+        <article class="card" aria-labelledby="proj-1-title">
+          <img
+            class="card__img"
+            src="images/Temple.jpeg"
+            alt="Temple building photographed during travel"
+          />
+          <div class="card__body">
+            <h3 class="card__title" id="proj-1-title">
+              Multi-Page Portfolio Website (HTML + Accessibility)
+            </h3>
 
-    <!-- Interactive Story Section -->
+            <p class="card__text">
+              I designed and built a multi-page website to practice semantic structure,
+              navigation consistency, and accessible content layout.
+            </p>
+
+            <p><strong>My Role:</strong> Information organization, page structure, content writing, and accessibility improvements.</p>
+            <p><strong>Skills Used:</strong> Semantic HTML, heading hierarchy, descriptive links, alt text, and navigation patterns.</p>
+
+            <div class="card__actions">
+              <a class="btn btn-primary" href="index.html">View Site Pages</a>
+              <a class="btn btn-secondary" href="contact.html">Contact Me</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" aria-labelledby="proj-2-title">
+          <img
+            class="card__img"
+            src="images/ski.jpg"
+            alt="Two skiers standing on a snowy trail surrounded by snow-covered trees"
+          />
+          <div class="card__body">
+            <h3 class="card__title" id="proj-2-title">
+              Usability Improvements (Release 8 Iterations)
+            </h3>
+
+            <p class="card__text">
+              After observing how users skim and scroll to find key information, I revised the site to improve clarity and task completion.
+            </p>
+
+            <p><strong>My Role:</strong> Testing observation, revision planning, and implementing changes in HTML and JavaScript.</p>
+            <p><strong>Skills Used:</strong> Usability writing, scannable formatting, accessibility checks, and iterative improvement.</p>
+
+            <div class="card__actions">
+              <a class="btn btn-primary" href="about.html">See About Updates</a>
+              <a class="btn btn-secondary" href="contact.html">Get in Touch</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <h2>Featured Image</h2>
+      <p>
+        A personal photo used as supporting content for my portfolio identity.
+      </p>
+
+      <img
+        src="images/jason-smiling.jpeg"
+        alt="Photo of Jason Waldman smiling outdoors"
+        width="300"
+      />
+    </section>
+
     <section class="interactive-story" aria-labelledby="story-title">
       <h2 id="story-title">Interactive Story: My Progress Timeline</h2>
 
@@ -134,7 +136,6 @@
         </figcaption>
       </figure>
     </section>
-
   </main>
 
   <footer>
