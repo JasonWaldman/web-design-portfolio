@@ -1,15 +1,13 @@
 /* =========================================================
-   style.css — Release 8 polish + Lab 9.2 UI Components
+   style.css — Release 9 UI Polish & Visual Upgrade
    Includes:
+   - Consistent design system
    - Mobile-first layout
-   - Responsive images + iframe
-   - Media query (>= 768px)
-   - WCAG-friendly contrast + links
-   - Visible keyboard focus states
-   - Current-page nav highlight
-   - Reusable buttons (primary + secondary)
-   - Reusable cards (image + text) + grid
-   - Consistent 8pt spacing tokens
+   - Reusable buttons and cards
+   - Refined spacing and hierarchy
+   - Navigation polish
+   - Hover/focus micro-interactions
+   - Accessible reveal behavior support
    ========================================================= */
 
 /* ---- Reset ---- */
@@ -23,57 +21,55 @@ html {
   font-size: 100%;
 }
 
-/* Better keyboard scroll to anchor links */
 html:focus-within {
   scroll-behavior: smooth;
 }
 
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  line-height: 1.6;
-  color: #111;
-  background: #fff;
-}
-
-/* =========================================================
-   Lab 9.2 — Spacing + tokens (8pt system)
-   ========================================================= */
-:root{
+/* ---- Design system ---- */
+:root {
   --space-1: 8px;
   --space-2: 16px;
   --space-3: 24px;
   --space-4: 32px;
+  --space-5: 48px;
 
   --radius: 12px;
-  --border: 1px solid #ddd;
+  --radius-pill: 999px;
 
-  --primary: #0b3d91;          /* match your site blue */
+  --primary: #0b3d91;
   --primary-hover: #082f6f;
-
-  --surface: #fff;
-  --surface-2: #f1f5ff;        /* matches your nav hover */
+  --text: #111;
   --muted: #444;
-
-  --focus: 3px solid #111;     /* high-contrast focus ring */
+  --background: #ffffff;
+  --surface: #ffffff;
+  --surface-soft: #f5f7ff;
+  --border: #ddd;
+  --focus: 3px solid #111;
 }
 
-/* ---- Spacing + readable width ---- */
+/* ---- Base ---- */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--background);
+}
+
 main {
   max-width: 900px;
   margin: 0 auto;
-  padding: 1.25rem;
+  padding: var(--space-3);
 }
 
-/* Consistent section spacing */
 section {
-  margin-bottom: 2rem;
+  margin-bottom: var(--space-4);
 }
 
 /* ---- Header / Nav / Footer ---- */
 header {
-  border-bottom: 1px solid #ddd;
-  background: #fff;
+  border-bottom: 1px solid var(--border);
+  background: var(--background);
 }
 
 nav {
@@ -93,27 +89,27 @@ nav ul {
 
 nav a {
   display: inline-block;
-  padding: 0.6rem 0.85rem;     /* larger tap targets (Lab 9.2) */
-  border-radius: 999px;
+  padding: 0.6rem 0.9rem;
+  border-radius: var(--radius-pill);
   color: var(--primary);
   text-decoration: underline;
   text-underline-offset: 0.15em;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
-/* Hover + focus should both be obvious */
-nav a:hover {
-  background: var(--surface-2);
+nav a:hover,
+nav a:focus-visible {
+  background: var(--surface-soft);
 }
 
-/* Highlight current page link */
 nav a[aria-current="page"] {
   background: #e6eeff;
   font-weight: 700;
 }
 
 footer {
-  border-top: 1px solid #ddd;
-  margin-top: 2rem;
+  border-top: 1px solid var(--border);
+  margin-top: var(--space-4);
   padding: 1rem 1.25rem;
   color: #222;
   max-width: 900px;
@@ -122,33 +118,50 @@ footer {
 }
 
 /* ---- Typography ---- */
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   line-height: 1.2;
   margin: 0 0 0.75rem;
 }
 
-h1 { font-size: 2rem; margin-top: 0.75rem; }
-h2 { font-size: 1.5rem; margin-top: 1.75rem; }
-h3 { font-size: 1.25rem; margin-top: 1.25rem; }
-h4 { font-size: 1.1rem; margin-top: 1rem; }
+h1 {
+  font-size: 2rem;
+  margin-top: 0.5rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-top: 0;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
 
 p {
   margin: 0 0 1rem;
 }
 
-ul, ol {
+ul,
+ol {
   margin: 0 0 1rem 1.25rem;
   padding: 0;
 }
 
-/* Accent text used in homepage headline */
+.lead {
+  font-size: 1.05rem;
+  color: var(--muted);
+}
+
 .accent {
   background: #e6eeff;
   padding: 0.1rem 0.35rem;
   border-radius: 0.4rem;
 }
 
-/* ---- Links (WCAG-friendly: not color-only + contrast) ---- */
+/* ---- Links ---- */
 a {
   color: var(--primary);
   text-decoration: underline;
@@ -159,57 +172,78 @@ a:hover {
   text-decoration-thickness: 2px;
 }
 
-/* ---- Responsive Images ---- */
+/* ---- Images / media ---- */
 img {
   max-width: 100%;
   height: auto;
   display: block;
+  border-radius: var(--radius);
 }
 
-/* =========================================================
-   Lab 9.2 — Buttons (Primary + Secondary)
-   Reusable classes: .btn .btn-primary .btn-secondary
-   ========================================================= */
+iframe {
+  max-width: 100%;
+  border: 0;
+  border-radius: var(--radius);
+}
+
+/* ---- Reusable content sections ---- */
+.content-section,
+.interactive-story {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+}
+
+.hero {
+  padding-top: var(--space-2);
+}
+
+/* ---- Buttons ---- */
 button,
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-
-  background: var(--primary);
-  color: #fff;
+  padding: 0.7rem 1rem;
+  border-radius: var(--radius-pill);
   border: 2px solid var(--primary);
-  padding: 0.6rem 1rem;
-  border-radius: 999px;
   font: inherit;
   cursor: pointer;
   text-decoration: none;
   line-height: 1;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
 button:hover,
 .btn:hover {
-  filter: brightness(0.95);
+  transform: translateY(-1px);
 }
 
-.btn-primary{
+.btn-primary {
   background: var(--primary);
   color: #fff;
-  border-color: var(--primary);
 }
 
-.btn-secondary{
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
+  color: #fff;
+}
+
+.btn-secondary {
   background: transparent;
   color: var(--primary);
-  border-color: var(--primary);
 }
 
-.btn-secondary:hover{
+.btn-secondary:hover,
+.btn-secondary:focus-visible {
   background: #e6eeff;
 }
 
-/* ---- Forms (if you have them) ---- */
+/* ---- Forms ---- */
 label {
   display: inline-block;
   margin-bottom: 0.35rem;
@@ -224,11 +258,11 @@ textarea {
   border: 2px solid #999;
   border-radius: 0.6rem;
   font: inherit;
-  color: #111;
+  color: var(--text);
   background: #fff;
 }
 
-/* ---- WCAG: Visible Focus States ---- */
+/* ---- Focus states ---- */
 a:focus,
 button:focus,
 input:focus,
@@ -237,7 +271,6 @@ textarea:focus {
   outline-offset: 3px;
 }
 
-/* Mostly show focus ring for keyboard users */
 :focus:not(:focus-visible) {
   outline: none;
 }
@@ -247,120 +280,92 @@ textarea:focus {
   outline-offset: 3px;
 }
 
-/* ---- Optional: Skip link styling ---- */
-.skip-link {
-  position: absolute;
-  left: -999px;
-  top: 0.5rem;
-  background: #fff;
-  color: #111;
-  border: 2px solid #111;
-  padding: 0.5rem 0.75rem;
-  border-radius: 0.5rem;
-  z-index: 9999;
-}
-
-.skip-link:focus,
-.skip-link:focus-visible {
-  left: 0.75rem;
-}
-
-/* =========================================================
-   Lab 9.2 — Cards (image + text) + grid
-   Reusable: .cards .card .card__img .card__body .card__title .card__text .card__actions
-   ========================================================= */
-.cards{
+/* ---- Cards ---- */
+.cards {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-2);
+  gap: var(--space-3);
   margin-top: var(--space-2);
 }
 
-.card{
+.card {
   background: var(--surface);
-  border: var(--border);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.card__img{
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.card__img {
   width: 100%;
   height: auto;
   display: block;
+  border-radius: 0;
 }
 
-.card__body{
-  padding: var(--space-2);
+.card__body {
+  padding: var(--space-3);
 }
 
-.card__title{
-  margin: 0 0 var(--space-1) 0;
+.card__title {
+  margin: 0 0 var(--space-1);
 }
 
-.card__text{
-  margin: 0 0 var(--space-2) 0;
+.card__text {
+  margin: 0 0 var(--space-2);
   color: var(--muted);
 }
 
-.card__actions{
+.card__actions {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-1);
-  margin-top: var(--space-1);
+  margin-top: var(--space-2);
 }
 
-/* Desktop cards */
-@media (min-width: 768px){
-  .cards{
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* ---- Portfolio polish (scannable sections) ---- */
-.interactive-story,
-main section[aria-labelledby] {
-  border: 1px solid #ddd;
-  border-radius: 0.75rem;
-  padding: 1rem;
-  background: #fff;
-}
-
-.interactive-story button {
-  margin-bottom: 1rem;
-}
-
-/* Responsive iframe */
-iframe {
-  max-width: 100%;
-  border: 0;
-}
-
-/* Hidden utility class (used by JS toggle) */
+/* ---- Utility ---- */
 .hidden {
   display: none;
 }
 
-/* ---- Reduced motion preference ---- */
+/* ---- Reduced motion ---- */
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
     scroll-behavior: auto;
   }
-  * {
+
+  *,
+  *::before,
+  *::after {
     transition: none !important;
     animation: none !important;
   }
 }
 
-/* ---- Media Query: tablet/desktop enhancements ---- */
+/* ---- Tablet / desktop ---- */
 @media (min-width: 768px) {
   main {
-    padding: 2rem;
+    padding: var(--space-4);
   }
 
   nav ul {
     gap: 1rem;
   }
 
-  h1 { font-size: 2.4rem; }
-  h2 { font-size: 1.75rem; }
+  h1 {
+    font-size: 2.4rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
