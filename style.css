@@ -369,3 +369,34 @@ textarea:focus {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+/* Showcase Page Layout */
+
+.showcase-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.showcase-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 1rem;
+  background: #fff;
+}
+
+.showcase-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 0.75rem 0 1rem;
+}
+
+.showcase-card h3 {
+  margin-top: 0;
+}
+
+@media (min-width: 768px) {
+  .showcase-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
